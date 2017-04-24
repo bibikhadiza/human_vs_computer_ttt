@@ -23,14 +23,23 @@
   background-color: rgba(29, 21, 21, 0.83);
 }
 
-.human{
+.human, .human_point{
   color: red;
 }
 
-.computer{
+.computer, .computer_point{
   color: #00ffd4;
 }
 
-.player_header {
+.player_header, .points_header{
   color: #d4b6b6;
+}
+
+/*.score_board{
+  display: inline;
+}*/
+.player_container, .points_container{
+  display: inline-block;
+margin:50px;
+margin-top: 5px;
 }

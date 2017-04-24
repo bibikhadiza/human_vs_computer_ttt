@@ -183,7 +183,6 @@ resetBoard(){
     return (
       <div className="App">
         <div className="header">
-          <h1>Impossible TIC-TAC-TOE</h1>
           <Header winner={this.state.winner}/>
         </div>
         <div className="board_boarder">

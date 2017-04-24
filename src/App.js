@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Tile from './components/Tile'
+import Button from './components/Button'
 
 class App extends Component {
   constructor(){
@@ -31,7 +32,7 @@ class App extends Component {
           <Header winner={this.state.winner}/>
         </div>
 
-      
+        <Button reset={this.resetBoard.bind(this)}/>
       </div>
     );
   }

@@ -1,11 +1,22 @@
 .board {
-    height: 500px;
-    width: 35%;
-    text-align: center;
-    border-radius: 30px;
-    margin-left: 30%;
-    background-color: #03A9F4;
+  height: 550px;
+  width: 35%;
+  text-align: center;
+  border-radius: 30px;
+  margin-left: 30%;
+  background-color: rgba(29, 21, 21, 0.83);
+  border-style: solid;
+  border-color: #5858de;
 }
+
+/*.board_boarder{
+  height: 505px;
+  width: 36%;
+  border-style: solid;
+  border-color: #5858de;
+}*/
+
+
 
 @media only screen and (max-width: 800px) {
   .board {
@@ -13,4 +24,17 @@
     width: 50%;
     margin: 0 auto;
   }
+}
+
+.hey{
+  position: relative;
+  margin: 0 auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Press Start 2P', cursive !important;
+    background-image: url(/static/media/thumb-1920-207111.e7db0c36.jpg);
+    background-size: cover;
 }

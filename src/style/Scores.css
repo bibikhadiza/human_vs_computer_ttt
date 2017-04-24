@@ -1,0 +1,36 @@
+.score_menu{
+  height: 34%;
+    width: 94%;
+    margin: 0 auto;
+    position: relative;
+    background: white;
+    margin-top: 79%;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #5858de;
+    background-color: rgba(29, 21, 21, 0.83);
+}
+
+.score_header{
+  color: white;
+  border-radius: 15px;
+  position: relative;
+  top: 10px;
+  width: 94%;
+  margin: 0 auto;
+  border-style: solid;
+  border-color: #5858de;
+  background-color: rgba(29, 21, 21, 0.83);
+}
+
+.human{
+  color: red;
+}
+
+.computer{
+  color: #00ffd4;
+}
+
+.player_header {
+  color: #d4b6b6;
+}

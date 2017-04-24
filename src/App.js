@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Tile from './components/Tile'
 import Button from './components/Button'
+import Scores from './components/Scores'
 
 class App extends Component {
   constructor(){
@@ -185,8 +186,11 @@ resetBoard(){
           <h1>Impossible TIC-TAC-TOE</h1>
           <Header winner={this.state.winner}/>
         </div>
-        <div className="board">
+        <div className="board_boarder">
+          <div className="board">
           {tiles}
+          <Scores />
+        </div>
         </div>
 
         <Button reset={this.resetBoard}/>

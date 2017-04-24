@@ -1,3 +1,16 @@
-.App {
-  text-align: center;
+.board {
+    height: 500px;
+    width: 35%;
+    text-align: center;
+    border-radius: 30px;
+    margin-left: 30%;
+    background-color: #03A9F4;
+}
+
+@media only screen and (max-width: 800px) {
+  .board {
+    height: 399px;
+    width: 50%;
+    margin: 0 auto;
+  }
 }

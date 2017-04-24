@@ -16,7 +16,7 @@ export default class Tile extends Component{
     return(
       <div onClick={() => {this.tileClick(this.props)}} className="tile">
         <p>{this.props.value}</p>
-      </div>
+    </div>
     )
   }
 }

@@ -145,7 +145,7 @@ gameInProgress(move){
       winner: player
     })
   }
-  
+
   this.setState({
     gameBoard: currentBoard
   })
@@ -182,11 +182,12 @@ resetBoard(){
     return (
       <div className="App">
         <div className="header">
-          <h1>TIC-TAC-TOE</h1>
+          <h1>Impossible TIC-TAC-TOE</h1>
           <Header winner={this.state.winner}/>
         </div>
-
-        {tiles}
+        <div className="board">
+          {tiles}
+        </div>
 
         <Button reset={this.resetBoard}/>
       </div>

@@ -3,6 +3,6 @@ import '../style/Button.css'
 
 export default function Button(props) {
   return (
-    <button onClick={this.props.reset}>Reset</button>
+    <button onClick={props.reset}>Reset</button>
   );
 }

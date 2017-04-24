@@ -9,7 +9,7 @@ export default class Tile extends Component{
   }
 
   tileClick(props){
-    props.gameInProgress(props.loc);
+    props.gameInProgress(props.move);
   }
 
   render(){

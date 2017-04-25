@@ -3,6 +3,7 @@ import './App.css';
 import Tile from './components/Tile'
 import Button from './components/Button'
 import Scores from './components/Scores'
+import FlashMessage from './components/FlashMessage'
 
 class App extends Component {
   constructor(){
@@ -18,7 +19,8 @@ class App extends Component {
       maxPlayer: "X",
       minPlayer: "O",
       playerXScore: 0,
-      playerOScore: 0
+      playerOScore: 0,
+      flashMessage: false
     }
     this.resetBoard = this.resetBoard.bind(this)
     this.gameInProgress = this.gameInProgress.bind(this)
@@ -147,8 +149,10 @@ gameInProgress(move){
     this.setState({
       gameBoard: currentBoard,
       winner: player,
-      playerOScore: this.state.playerOScore + 1
+      playerOScore: this.state.playerOScore + 1,
+      flashMessage: true
     })
+
   }
 
   this.setState({
@@ -175,7 +179,8 @@ resetBoard(){
     turn: 'X',
     winner: null,
     maxPlayer: "X",
-    minPlayer: "O"
+    minPlayer: "O",
+    flashMessage: false
   })
 }
 
@@ -198,10 +203,15 @@ resetBoard(){
 
     return (
       <div className="App">
+        <FlashMessage flash={this.state.flashMessage}/>
         <div className="board_boarder">
           <div className="board">
           {tiles}
-          <Scores winner={this.winningMessage()} resetBoard={this.resetBoard} humanPlayerScore={this.state.playerXScore} compPlayerScore={this.state.playerOScore}/>
+          <Scores
+            winner={this.winningMessage()}
+            resetBoard={this.resetBoard}
+            humanPlayerScore={this.state.playerXScore}
+            compPlayerScore={this.state.playerOScore}/>
         </div>
         </div>
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Tile from './components/Tile'
-import Button from './components/Button'
 import Scores from './components/Scores'
 import FlashMessage from './components/FlashMessage'
 
@@ -188,7 +187,7 @@ resetBoard(){
  winningMessage(){
   if(this.state.winner === null){
     return "SYSTEM INFORMATION"
-  } else if(this.state.winner == "tie"){
+  } else if(this.state.winner === "tie"){
     return "TIE GAME"
   } else {
     return this.state.winner + " HAS WON!"

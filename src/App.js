@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
 import Tile from './components/Tile'
 import Button from './components/Button'
 import Scores from './components/Scores'
@@ -17,12 +16,15 @@ class App extends Component {
       turn: 'X',
       winner: null,
       maxPlayer: "X",
-      minPlayer: "O"
+      minPlayer: "O",
+      playerXScore: 0,
+      playerOScore: 0
     }
     this.resetBoard = this.resetBoard.bind(this)
     this.gameInProgress = this.gameInProgress.bind(this)
     this.copyBoard = this.copyBoard.bind(this)
     this.tieGame = this.tieGame.bind(this)
+    this.winningMessage = this.winningMessage.bind(this)
   }
 
   winner(gameBoard, player){
@@ -128,7 +130,8 @@ gameInProgress(move){
   if(this.winner(currentBoard, player )){
     this.setState({
       gameBoard: currentBoard,
-      winner: player
+      winner: player,
+      playerXScore: this.state.playerXScore + 1
     })
   }
   if(this.tieGame(currentBoard)){
@@ -143,7 +146,8 @@ gameInProgress(move){
   if(this.winner(currentBoard, player)){
     this.setState({
       gameBoard: currentBoard,
-      winner: player
+      winner: player,
+      playerOScore: this.state.playerOScore + 1
     })
   }
 
@@ -175,6 +179,18 @@ resetBoard(){
   })
 }
 
+
+ winningMessage(){
+  if(this.state.winner === null){
+    return "SYSTEM INFORMATION"
+  } else if(this.state.winner == "tie"){
+    return "TIE GAME"
+  } else {
+    return this.state.winner + " HAS WON!"
+  }
+}
+
+
   render() {
     const tiles = this.state.gameBoard.map(function(value, i){
       return(<Tile key={i} move={i} value={value} gameInProgress={this.gameInProgress}/>
@@ -182,17 +198,13 @@ resetBoard(){
 
     return (
       <div className="App">
-        <div className="header">
-          <Header winner={this.state.winner}/>
-        </div>
         <div className="board_boarder">
           <div className="board">
           {tiles}
-          <Scores />
+          <Scores winner={this.winningMessage()} resetBoard={this.resetBoard} humanPlayerScore={this.state.playerXScore} compPlayerScore={this.state.playerOScore}/>
         </div>
         </div>
 
-        <Button reset={this.resetBoard}/>
       </div>
     );
   }

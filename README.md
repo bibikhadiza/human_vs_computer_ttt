@@ -3,7 +3,7 @@ A simple single page Player VS. Computer web application built using React.js an
 
 ## Objective
   • Create a version of Tic Tac Toe (TTT) in your language/framework of choice \
-  • Must have a Graphic User Interface \   
+  • Must have a Graphic User Interface    
   • Build a two-player version or a single-player vs. computer version \
   • The game should be able to determine a winner \
   • Have fun!
@@ -36,7 +36,7 @@ Once you have installed all dependencies, run
 
   • React \
   • HTML/HTML5 \
-  • CSS/CSS3 \
+  • CSS/CSS3 
  
   No Back End
 

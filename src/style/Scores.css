@@ -1,0 +1,43 @@
+.score_menu{
+  height: 40%;
+width: 94%;
+margin: 0 auto;
+position: relative;
+background: white;
+margin-top: 72%;
+border-radius: 15px;
+border-style: solid;
+border-color: #5858de;
+background-color: rgba(29, 21, 21, 0.83);
+}
+
+.score_header{
+  color: white;
+  border-radius: 15px;
+  position: relative;
+  top: 10px;
+  width: 94%;
+  margin: 0 auto;
+  border-style: solid;
+  border-color: #5858de;
+  background-color: rgba(29, 21, 21, 0.83);
+}
+
+.human, .human_point{
+  color: red;
+}
+
+.computer, .computer_point{
+  color: #00ffd4;
+}
+
+.player_header, .points_header{
+  color: #d4b6b6;
+}
+
+.player_container, .points_container{
+  display: inline-block;
+margin:50px;
+margin-top: 5px;
+height: 70px;
+}

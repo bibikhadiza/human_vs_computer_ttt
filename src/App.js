@@ -29,170 +29,169 @@ class App extends Component {
   }
 
   winner(gameBoard, player){
-  if(
-    (gameBoard[0] === player && gameBoard[1] === player && gameBoard[2] === player) ||
-    (gameBoard[3] === player && gameBoard[4] === player && gameBoard[5] === player) ||
-    (gameBoard[6] === player && gameBoard[7] === player && gameBoard[8] === player) ||
-    (gameBoard[0] === player && gameBoard[3] === player && gameBoard[6] === player) ||
-    (gameBoard[1] === player && gameBoard[4] === player && gameBoard[7] === player) ||
-    (gameBoard[2] === player && gameBoard[5] === player && gameBoard[8] === player) ||
-    (gameBoard[0] === player && gameBoard[4] === player && gameBoard[8] === player) ||
-    (gameBoard[2] === player && gameBoard[4] === player && gameBoard[6] === player)
-  ){
-    return true;
-  } else {
-    return null;
-  }
-}
-
-copyBoard(gameBoard){
-  return gameBoard.slice(0)
-}
-
-validMove(move, player, gameBoard){
-  var newBoard = this.copyBoard(gameBoard)
-  if(newBoard[move] === " "){
-    newBoard[move] = player;
-    return newBoard
-  }else{
-    return null;
-  }
-}
-
-aiMove(gameBoard){
-  let bestMove = 100;
-  let move = null;
-  if(this.winner(gameBoard, "X") || this.winner(gameBoard, "O") || this.tieGame(gameBoard)){
-    return null;
-  }
-  for(var x = 0; x < gameBoard.length; x++){
-    let newBoard = this.validMove(x, this.state.minPlayer, gameBoard);
-    if(newBoard){
-      var score = this.maxScore(newBoard);
-      if(score < bestMove){
-        bestMove = score;
-        move = x;
-      }
+    if(
+      (gameBoard[0] === player && gameBoard[1] === player && gameBoard[2] === player) ||
+      (gameBoard[3] === player && gameBoard[4] === player && gameBoard[5] === player) ||
+      (gameBoard[6] === player && gameBoard[7] === player && gameBoard[8] === player) ||
+      (gameBoard[0] === player && gameBoard[3] === player && gameBoard[6] === player) ||
+      (gameBoard[1] === player && gameBoard[4] === player && gameBoard[7] === player) ||
+      (gameBoard[2] === player && gameBoard[5] === player && gameBoard[8] === player) ||
+      (gameBoard[0] === player && gameBoard[4] === player && gameBoard[8] === player) ||
+      (gameBoard[2] === player && gameBoard[4] === player && gameBoard[6] === player)
+    ){
+      return true;
+    } else {
+      return null;
     }
   }
-  return move;
-}
 
-minScore(gameBoard){
-  if(this.winner(gameBoard, "X")){
-    return 10;
-  } else if(this.winner(gameBoard, "O")){
-    return -10;
-  } else if (this.tieGame(gameBoard)){
-    return 0;
-  } else {
-    var bestMove = 100;
+  copyBoard(gameBoard){
+    return gameBoard.slice(0)
+  }
+
+  validMove(move, player, gameBoard){
+    var newBoard = this.copyBoard(gameBoard)
+    if(newBoard[move] === " "){
+      newBoard[move] = player;
+      return newBoard
+    }else{
+      return null;
+    }
+  }
+
+  aiMove(gameBoard){
+    let bestMove = 100;
+    let move = null;
+    if(this.winner(gameBoard, "X") || this.winner(gameBoard, "O") || this.tieGame(gameBoard)){
+      return null;
+    }
     for(var x = 0; x < gameBoard.length; x++){
-      var boardCopy = this.validMove(x, this.state.minPlayer, gameBoard);
-      if(boardCopy){
-        var newPredictionMove = this.maxScore(boardCopy);
-        if(newPredictionMove < bestMove ){
-          bestMove = newPredictionMove;
+      let newBoard = this.validMove(x, this.state.minPlayer, gameBoard);
+      if(newBoard){
+        var score = this.maxScore(newBoard);
+        if(score < bestMove){
+          bestMove = score;
+          move = x;
         }
       }
     }
-    return bestMove;
+    return move;
   }
-}
 
-maxScore(gameBoard){
-  if(this.winner(gameBoard, "X")){
-    return 10;
-  } else if(this.winner(gameBoard, "O")){
-    return -10;
-  } else if (this.tieGame(gameBoard)){
-    return 0;
-  } else {
-    var bestMove = -100;
-    for(var x = 0; x < gameBoard.length; x++){
-      var boardCopy = this.validMove(x, this.state.maxPlayer, gameBoard);
-      if(boardCopy){
-        var newPredictionMove = this.minScore(boardCopy);
-        if(newPredictionMove > bestMove ){
-          bestMove = newPredictionMove;
+  minScore(gameBoard){
+    if(this.winner(gameBoard, "X")){
+      return 10;
+    } else if(this.winner(gameBoard, "O")){
+      return -10;
+    } else if (this.tieGame(gameBoard)){
+      return 0;
+    } else {
+      var bestMove = 100;
+      for(var x = 0; x < gameBoard.length; x++){
+        var boardCopy = this.validMove(x, this.state.minPlayer, gameBoard);
+        if(boardCopy){
+          var newPredictionMove = this.maxScore(boardCopy);
+          if(newPredictionMove < bestMove ){
+            bestMove = newPredictionMove;
+          }
         }
       }
+      return bestMove;
     }
-    return bestMove;
   }
-}
 
-gameInProgress(move){
-  if(this.state.winner !== null){
-    return;
+  maxScore(gameBoard){
+    if(this.winner(gameBoard, "X")){
+      return 10;
+    } else if(this.winner(gameBoard, "O")){
+      return -10;
+    } else if (this.tieGame(gameBoard)){
+      return 0;
+    } else {
+      var bestMove = -100;
+      for(var x = 0; x < gameBoard.length; x++){
+        var boardCopy = this.validMove(x, this.state.maxPlayer, gameBoard);
+        if(boardCopy){
+          var newPredictionMove = this.minScore(boardCopy);
+          if(newPredictionMove > bestMove ){
+            bestMove = newPredictionMove;
+          }
+        }
+      }
+      return bestMove;
+    }
   }
-  let player = this.state.turn;
-  let currentBoard = this.validMove(move, player, this.state.gameBoard);
-  if(this.winner(currentBoard, player )){
+
+  gameInProgress(move){
+    if(this.state.winner !== null){
+      return;
+    }
+    let player = this.state.turn;
+    let currentBoard = this.validMove(move, player, this.state.gameBoard);
+    if(this.winner(currentBoard, player )){
+      this.setState({
+        gameBoard: currentBoard,
+        winner: player,
+        playerXScore: this.state.playerXScore + 1
+      })
+    }
+    if(this.tieGame(currentBoard)){
+      this.setState({
+        gameBoard: currentBoard,
+        winner: "tie"
+      });
+    }
+
+    player = "O";
+    currentBoard = this.validMove(this.aiMove(currentBoard), player, currentBoard);
+    if(this.winner(currentBoard, player)){
+      this.setState({
+        gameBoard: currentBoard,
+        winner: player,
+        playerOScore: this.state.playerOScore + 1,
+        flashMessage: true
+      })
+    }
+
     this.setState({
-      gameBoard: currentBoard,
-      winner: player,
-      playerXScore: this.state.playerXScore + 1
+      gameBoard: currentBoard
     })
   }
-  if(this.tieGame(currentBoard)){
-    this.setState({
-      gameBoard: currentBoard,
-      winner: "tie"
-    });
+
+  tieGame(gameBoard){
+    let moves = gameBoard.join("").replace(/ /g, "");
+    if(moves.length === 9){
+      return true
+    } else {
+      return false
+    }
   }
 
-  player = "O";
-  currentBoard = this.validMove(this.aiMove(currentBoard), player, currentBoard);
-  if(this.winner(currentBoard, player)){
+  resetBoard(){
     this.setState({
-      gameBoard: currentBoard,
-      winner: player,
-      playerOScore: this.state.playerOScore + 1,
-      flashMessage: true
+      gameBoard: [
+        " ", " ", " ",
+        " ", " ", " ",
+        " ", " ", " "
+      ],
+      turn: 'X',
+      winner: null,
+      maxPlayer: "X",
+      minPlayer: "O",
+      flashMessage: false
     })
-
   }
 
-  this.setState({
-    gameBoard: currentBoard
-  })
-}
 
-tieGame(gameBoard){
-  let moves = gameBoard.join("").replace(/ /g, "");
-  if(moves.length === 9){
-    return true
-  } else {
-    return false
+  winningMessage(){
+    if(this.state.winner === null){
+      return "SYSTEM INFORMATION"
+    } else if(this.state.winner === "tie"){
+      return "TIE GAME"
+    } else {
+      return this.state.winner + " HAS WON!"
+    }
   }
-}
-
-resetBoard(){
-  this.setState({
-    gameBoard: [
-      " ", " ", " ",
-      " ", " ", " ",
-      " ", " ", " "
-    ],
-    turn: 'X',
-    winner: null,
-    maxPlayer: "X",
-    minPlayer: "O",
-    flashMessage: false
-  })
-}
-
-
- winningMessage(){
-  if(this.state.winner === null){
-    return "SYSTEM INFORMATION"
-  } else if(this.state.winner === "tie"){
-    return "TIE GAME"
-  } else {
-    return this.state.winner + " HAS WON!"
-  }
-}
 
 
   render() {
@@ -203,17 +202,15 @@ resetBoard(){
     return (
       <div className="App">
         <FlashMessage flash={this.state.flashMessage}/>
-        <div className="board_boarder">
           <div className="board">
-          {tiles}
+            {tiles}
           <Scores
             winner={this.winningMessage()}
             resetBoard={this.resetBoard}
             humanPlayerScore={this.state.playerXScore}
-            compPlayerScore={this.state.playerOScore}/>
-        </div>
-        </div>
-
+            compPlayerScore={this.state.playerOScore}
+          />
+          </div>
       </div>
     );
   }

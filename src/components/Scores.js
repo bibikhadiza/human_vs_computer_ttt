@@ -21,7 +21,7 @@ export default function Scores(props) {
             <h5 className="computer_point">{props.compPlayerScore}</h5>
           </div>
           <Button reset={props.resetBoard}/>
-      </div>
+        </div>
     </div>
   );
 }

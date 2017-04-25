@@ -201,8 +201,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <FlashMessage flash={this.state.flashMessage}/>
           <div className="board">
+            <FlashMessage flash={this.state.flashMessage}/>
             {tiles}
           <Scores
             winner={this.winningMessage()}

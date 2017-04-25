@@ -5,28 +5,11 @@
   border-radius: 30px;
   margin: 0 auto;
   margin-top: 25px;
-  /*margin-left: 30%;*/
   background-color: rgba(29, 21, 21, 0.83);
   border-style: solid;
   border-color: #5858de;
 }
 
-/*.board_boarder{
-  height: 505px;
-  width: 36%;
-  border-style: solid;
-  border-color: #5858de;
-}*/
-
-
-
-@media only screen and (max-width: 800px) {
-  .board {
-    height: 399px;
-    width: 50%;
-    margin: 0 auto;
-  }
-}
 
 .hey{
   position: relative;
@@ -39,4 +22,10 @@ body {
     font-family: 'Press Start 2P', cursive !important;
     background-image: url(https://images.alphacoders.com/207/thumb-1920-207111.jpg);
     background-size: cover;
+}
+
+.App{
+  text-align: center;
+  overflow: hidden;
+  min-width: 1300px;
 }

@@ -1,15 +1,18 @@
 .score_menu{
   height: 40%;
-width: 94%;
-margin: 0 auto;
-position: relative;
-background: white;
-margin-top: 72%;
-border-radius: 15px;
-border-style: solid;
-border-color: #5858de;
-background-color: rgba(29, 21, 21, 0.83);
+  width: 94%;
+  margin: 0 auto;
+  position: relative;
+  background: white;
+  margin-top: 72%;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: #5858de;
+  background-color: rgba(29, 21, 21, 0.83);
+  top: -15px;
 }
+
+
 
 .score_header{
   color: white;

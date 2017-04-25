@@ -185,7 +185,7 @@ class App extends Component {
 
   winningMessage(){
     if(this.state.winner === null){
-      return "SYSTEM INFORMATION"
+      return "IMPOSSIBLE TIC-TC-TOE"
     } else if(this.state.winner === "tie"){
       return "TIE GAME"
     } else {
